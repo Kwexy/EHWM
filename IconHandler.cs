@@ -105,7 +105,7 @@ namespace EHWM {
         }
 
         private void menuItemTitle_Click (object sender, EventArgs e) {
-            
+            //OPEN GUI
         }
 
         private void menuItemQuit_Click(object sender, EventArgs e) {

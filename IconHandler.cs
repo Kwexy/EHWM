@@ -109,6 +109,7 @@ namespace EHWM {
         }
 
         private void menuItemQuit_Click(object sender, EventArgs e) {
+            toolboxIcon.Visible = false;
             Application.Exit();
         }
 
@@ -140,20 +141,20 @@ namespace EHWM {
 
         public string getMenuItemChecked() {
             if (menuItemCPU.Checked) {
-                return "CPU";
+                return "CPU Speed";
             } else if (menuItemMEM.Checked) {
-                return "MEM";
+                return "Memory Used";
             } else if (menuItemGPU.Checked) {
-                return "GPU";
+                return "GPU Speed";
             } else if (menuItemDSK.Checked) {
-                return "DSK";
+                return "Disk Speed";
             } else {
                 return "NUL";
             }
         }
 
         public void update() {
-            //toolboxIcon.Text = "EHWM v." + Application.ProductVersion + "\n" + getMenuItemChecked();
+            toolboxIcon.Text = "EHWM v." + Application.ProductVersion + " - " + getMenuItemChecked();
 
             if (hardPerc <= 10 && hardPerc > 0) {
                 toolboxIcon.Icon = graph0;

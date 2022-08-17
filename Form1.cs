@@ -29,6 +29,7 @@ namespace EHWM {
 
         public EHWMForm() {
             InitializeComponent();
+            iconHandler.setIcons();
             iconHandler.initMenuItems();
         }
 

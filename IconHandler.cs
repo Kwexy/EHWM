@@ -12,22 +12,12 @@ using System.Windows.Forms;
 namespace EHWM {
     public class IconHandler {
 
+        //fields
         private int hardPerc;
-
-        private Icon graph0;
-        private Icon graph1;
-        private Icon graph2;
-        private Icon graph3;
-        private Icon graph4;
-        private Icon graph5;
-        private Icon graph6;
-        private Icon graph7;
-        private Icon graph8;
-        private Icon graph9;
-        private Icon graph10;
+        private Form mainForm;
+        private Icon[] graphAnim;
         private NotifyIcon toolboxIcon;
         private ContextMenu toolboxMenu;
-        private ContextMenu monitorMenu;
         private MenuItem menuItemTitle;
         private MenuItem menuItemSwitch;
         private MenuItem menuItemQuit;
@@ -36,31 +26,30 @@ namespace EHWM {
         private MenuItem menuItemGPU;
         private MenuItem menuItemDSK;
 
-
-        //get icons and menu set up NOTE: CHANGE ICON PROGRAMATICALLY (NO HARD CODE)
+        //bind icons to .ico files
         public void setIcons() {
-            //bind icons to .ico files
-            graph0 = new Icon("graph0.ico");
-            graph1 = new Icon("graph1.ico");
-            graph2 = new Icon("graph2.ico");
-            graph3 = new Icon("graph3.ico");
-            graph4 = new Icon("graph4.ico");
-            graph5 = new Icon("graph5.ico");
-            graph6 = new Icon("graph6.ico");
-            graph7 = new Icon("graph7.ico");
-            graph8 = new Icon("graph8.ico");
-            graph9 = new Icon("graph9.ico");
-            graph10 = new Icon("graph10.ico");
+            graphAnim = new Icon[11];
+            for (int i = 0; i < graphAnim.Length-1; i++) {
+                string fileName = "graph" + i.ToString() + ".ico";
+                graphAnim[i] = new Icon(fileName);
+            }
         }
 
+        public IconHandler(Form form) {
+            mainForm = form;
+        }
+
+        //set local hardware value percentage
         public void setPerc(int perc) {
             hardPerc = perc;
         }
 
+        //setup ContextMenu for NotifyIcon
         public void setupMenu() {
             toolboxIcon.ContextMenu = toolboxMenu;
         }
 
+        //set menu item values
         public void initMenuItems() {
             toolboxMenu = new ContextMenu();
             menuItemTitle = new MenuItem();
@@ -76,7 +65,7 @@ namespace EHWM {
 
             toolboxIcon = new NotifyIcon();
             toolboxIcon.Visible = true;
-            toolboxIcon.Icon = graph0;
+            toolboxIcon.Icon = graphAnim[0];
 
             menuItemTitle.Text = "EHWM v." + Application.ProductVersion;
             menuItemSwitch.Text = "Switch";
@@ -105,9 +94,16 @@ namespace EHWM {
         }
 
         private void menuItemTitle_Click (object sender, EventArgs e) {
-            //OPEN GUI
+            mainForm.Visible = true;
+            mainForm.MinimizeBox = false;
+            mainForm.ShowInTaskbar = true;
+            mainForm.WindowState = FormWindowState.Normal;
+            mainForm.Show();
+            mainForm.Activate();
+            mainForm.TopMost = true;
+            mainForm.Focus();
         }
-
+        
         private void menuItemQuit_Click(object sender, EventArgs e) {
             toolboxIcon.Visible = false;
             Application.Exit();
@@ -154,31 +150,13 @@ namespace EHWM {
         }
 
         public void update() {
-            toolboxIcon.Text = "EHWM v." + Application.ProductVersion + " - " + getMenuItemChecked();
-
-            if (hardPerc <= 10 && hardPerc > 0) {
-                toolboxIcon.Icon = graph0;
-            } else if (hardPerc <= 20 && hardPerc > 10) {
-                toolboxIcon.Icon = graph1;
-            } else if (hardPerc <= 30 && hardPerc > 20) {
-                toolboxIcon.Icon = graph2;
-            } else if (hardPerc <= 40 && hardPerc > 30) {
-                toolboxIcon.Icon = graph3;
-            } else if (hardPerc <= 50 && hardPerc > 40) {
-                toolboxIcon.Icon = graph4;
-            } else if (hardPerc <= 60 && hardPerc > 50) {
-                toolboxIcon.Icon = graph5;
-            } else if (hardPerc <= 70 && hardPerc > 60) {
-                toolboxIcon.Icon = graph6;
-            } else if (hardPerc <= 80 && hardPerc > 70) {
-                toolboxIcon.Icon = graph7;
-            } else if (hardPerc <= 90 && hardPerc > 80) {
-                toolboxIcon.Icon = graph8;
-            } else if (hardPerc <= 100 && hardPerc > 90) {
-                toolboxIcon.Icon = graph9;
-            } else if (hardPerc == 100) {
-                toolboxIcon.Icon = graph10;
+            toolboxIcon.Text = Application.ProductName + "v." + Application.ProductVersion + " - " + getMenuItemChecked();
+            if (hardPerc < 100) {
+                toolboxIcon.Icon = graphAnim[(int)Math.Floor(hardPerc/10.0)];
+            } else {
+                toolboxIcon.Icon = graphAnim[10];
             }
+                
         }
     }
 }

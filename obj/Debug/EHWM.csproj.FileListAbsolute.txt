@@ -58,7 +58,6 @@ C:\Users\kyran\Documents\GitHub\EHWM\dev\bin\Debug\graph9.ico
 C:\Users\kyran\Documents\GitHub\EHWM\dev\bin\Debug\EHWM.exe.config
 C:\Users\kyran\Documents\GitHub\EHWM\dev\bin\Debug\EHWM.exe
 C:\Users\kyran\Documents\GitHub\EHWM\dev\bin\Debug\EHWM.pdb
-C:\Users\kyran\Documents\GitHub\EHWM\dev\obj\Debug\EHWM.csproj.AssemblyReference.cache
 C:\Users\kyran\Documents\GitHub\EHWM\dev\obj\Debug\EHWM.csproj.SuggestedBindingRedirects.cache
 C:\Users\kyran\Documents\GitHub\EHWM\dev\obj\Debug\EHWM.EHWMForm.resources
 C:\Users\kyran\Documents\GitHub\EHWM\dev\obj\Debug\EHWM.Properties.Resources.resources
@@ -66,3 +65,4 @@ C:\Users\kyran\Documents\GitHub\EHWM\dev\obj\Debug\EHWM.csproj.GenerateResource.
 C:\Users\kyran\Documents\GitHub\EHWM\dev\obj\Debug\EHWM.csproj.CoreCompileInputs.cache
 C:\Users\kyran\Documents\GitHub\EHWM\dev\obj\Debug\EHWM.exe
 C:\Users\kyran\Documents\GitHub\EHWM\dev\obj\Debug\EHWM.pdb
+C:\Users\kyran\Documents\GitHub\EHWM\dev\obj\Debug\EHWM.csproj.AssemblyReference.cache

@@ -1,2 +1,2 @@
 # EHWM
-A Simple Hardware Monitor That Lives In The Toolbar
+A Simple Hardware Monitor That Lives In The Taskbar

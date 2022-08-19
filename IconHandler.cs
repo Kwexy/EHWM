@@ -12,12 +12,12 @@ using System.Windows.Forms;
 namespace EHWM {
     public class IconHandler {
 
+        //fields
         private int hardPerc;
-
+        private Form mainForm;
         private Icon[] graphAnim;
         private NotifyIcon toolboxIcon;
         private ContextMenu toolboxMenu;
-        private ContextMenu monitorMenu;
         private MenuItem menuItemTitle;
         private MenuItem menuItemSwitch;
         private MenuItem menuItemQuit;
@@ -26,10 +26,8 @@ namespace EHWM {
         private MenuItem menuItemGPU;
         private MenuItem menuItemDSK;
 
-
-        //get icons and menu set up NOTE: CHANGE ICON PROGRAMATICALLY (NO HARD CODE)
+        //bind icons to .ico files
         public void setIcons() {
-            //bind icons to .ico files
             graphAnim = new Icon[11];
             for (int i = 0; i < graphAnim.Length-1; i++) {
                 string fileName = "graph" + i.ToString() + ".ico";
@@ -37,14 +35,21 @@ namespace EHWM {
             }
         }
 
+        public IconHandler(Form form) {
+            mainForm = form;
+        }
+
+        //set local hardware value percentage
         public void setPerc(int perc) {
             hardPerc = perc;
         }
 
+        //setup ContextMenu for NotifyIcon
         public void setupMenu() {
             toolboxIcon.ContextMenu = toolboxMenu;
         }
 
+        //set menu item values
         public void initMenuItems() {
             toolboxMenu = new ContextMenu();
             menuItemTitle = new MenuItem();
@@ -89,9 +94,16 @@ namespace EHWM {
         }
 
         private void menuItemTitle_Click (object sender, EventArgs e) {
-            //OPEN GUI
+            mainForm.Visible = true;
+            mainForm.MinimizeBox = false;
+            mainForm.ShowInTaskbar = true;
+            mainForm.WindowState = FormWindowState.Normal;
+            mainForm.Show();
+            mainForm.Activate();
+            mainForm.TopMost = true;
+            mainForm.Focus();
         }
-
+        
         private void menuItemQuit_Click(object sender, EventArgs e) {
             toolboxIcon.Visible = false;
             Application.Exit();
@@ -138,7 +150,7 @@ namespace EHWM {
         }
 
         public void update() {
-            toolboxIcon.Text = "EHWM v." + Application.ProductVersion + " - " + getMenuItemChecked();
+            toolboxIcon.Text = Application.ProductName + "v." + Application.ProductVersion + " - " + getMenuItemChecked();
             if (hardPerc < 100) {
                 toolboxIcon.Icon = graphAnim[(int)Math.Floor(hardPerc/10.0)];
             } else {

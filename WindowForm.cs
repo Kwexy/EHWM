@@ -17,7 +17,9 @@ namespace EHWM {
         public EHWMForm() {
             hardwareInfoHandler = new HardwareInfoHandler(this);
             InitializeComponent();
-            this.aboutText.Text = "v." + Application.ProductVersion.ToString() + "\n\nA Simple Hardware Monitor That Lives In The Taskbar";
+            this.aboutText.Text = "v." + Application.ProductVersion.ToString() + "\n\n" +
+            "A Simple Hardware Monitor That Lives In The Taskbar\n\n" +
+            "Created by: Kyran Gibson";
         }
 
         public void Form_Load(object sender, EventArgs e) {

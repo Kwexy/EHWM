@@ -18,7 +18,7 @@ namespace EHWM {
 
         private PerformanceCounter MEM = new PerformanceCounter("Memory", "% Committed Bytes In Use");
 
-        private PerformanceCounter GPU = new PerformanceCounter("GPU Engine", "Utilization Percentage", "pid_1200_luid_0x00000000_0x0000CA65_phys_0_eng_0_engtype_3D");
+        private PerformanceCounter GPU = new PerformanceCounter("GPU Engine", "Utilization Percentage");
 
         private PerformanceCounter DSK = new PerformanceCounter("PhysicalDisk", "% Disk Time", "_Total");
 
@@ -37,13 +37,13 @@ namespace EHWM {
         }
 
         public void updateMonitor() {
-            if (iconHandler.getMenuItemChecked() == "CPU Speed") {
+            if (iconHandler.getMenuItemChecked() == "CPU Usage") {
                 monitor = eMonitor.eCPU;
             }
             if (iconHandler.getMenuItemChecked() == "Memory Used") {
                 monitor = eMonitor.eMEM;
             }
-            if (iconHandler.getMenuItemChecked() == "GPU Speed") {
+            if (iconHandler.getMenuItemChecked() == "GPU Usage") {
                 monitor = eMonitor.eGPU;
             }
             if (iconHandler.getMenuItemChecked() == "Disk Speed") {

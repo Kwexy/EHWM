@@ -40,6 +40,8 @@ namespace EHWM {
             this.titleText = new System.Windows.Forms.Label();
             this.aboutText = new System.Windows.Forms.Label();
             this.githubLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.logoPictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -69,7 +71,6 @@ namespace EHWM {
             this.aboutText.Name = "aboutText";
             this.aboutText.Size = new System.Drawing.Size(380, 70);
             this.aboutText.TabIndex = 1;
-            this.aboutText.Text = "";
             this.aboutText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // githubLinkLabel
@@ -86,12 +87,24 @@ namespace EHWM {
             this.githubLinkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.githubLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.githubLinkLabel_LinkClicked);
             // 
+            // logoPictureBox
+            // 
+            this.logoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
+            this.logoPictureBox.Location = new System.Drawing.Point(140, 12);
+            this.logoPictureBox.Name = "logoPictureBox";
+            this.logoPictureBox.Size = new System.Drawing.Size(100, 100);
+            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.logoPictureBox.TabIndex = 3;
+            this.logoPictureBox.TabStop = false;
+            // 
             // EHWMForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.ClientSize = new System.Drawing.Size(380, 257);
+            this.Controls.Add(this.logoPictureBox);
             this.Controls.Add(this.githubLinkLabel);
             this.Controls.Add(this.aboutText);
             this.Controls.Add(this.titleText);
@@ -104,6 +117,7 @@ namespace EHWM {
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EHWMForm_FormClosing);
             this.Load += new System.EventHandler(this.Form_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -114,6 +128,7 @@ namespace EHWM {
         private Label titleText;
         private Label aboutText;
         private LinkLabel githubLinkLabel;
+        private PictureBox logoPictureBox;
     }
 }
 

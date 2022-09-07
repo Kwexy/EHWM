@@ -30,7 +30,7 @@ namespace EHWM {
         public void setIcons() {
             graphAnim = new Icon[11];
             for (int i = 0; i < graphAnim.Length-1; i++) {
-                string fileName = "graph" + i.ToString() + ".ico";
+                string fileName = @"icons\graph" + i.ToString() + ".ico";
                 graphAnim[i] = new Icon(fileName);
             }
         }

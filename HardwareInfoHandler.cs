@@ -9,9 +9,6 @@ using System.Windows.Forms;
 namespace EHWM {
         public class HardwareInfoHandler {
 
-        private Form mainForm;
-
-
         /*CREATES PERFORMANCE COUNTER OBJECTS*/
 
         private PerformanceCounter CPU = new PerformanceCounter("Processor", "% Processor Time", "_Total");
@@ -23,52 +20,51 @@ namespace EHWM {
         private PerformanceCounter DSK = new PerformanceCounter("PhysicalDisk", "% Disk Time", "_Total");
 
 
-        private enum eMonitor { eCPU, eMEM, eGPU, eDSK };
-        private eMonitor monitor = eMonitor.eCPU;
+        private enum EMonitor { eCPU, eMEM, eGPU, eDSK };
+        private EMonitor monitor = EMonitor.eCPU;
 
         public IconHandler iconHandler;
 
         public HardwareInfoHandler(Form form) {
-            mainForm = form;
             iconHandler = new IconHandler(form);
-            iconHandler.setIcons();
-            iconHandler.initMenuItems();
-            iconHandler.setupMenu();
+            iconHandler.SetIcons();
+            iconHandler.InitMenuItems();
+            iconHandler.SetupMenu();
         }
 
-        public void updateMonitor() {
-            if (iconHandler.getMenuItemChecked() == "CPU Usage") {
-                monitor = eMonitor.eCPU;
+        public void UpdateMonitor() {
+            if (iconHandler.GetMenuItemChecked() == "CPU Usage") {
+                monitor = EMonitor.eCPU;
             }
-            if (iconHandler.getMenuItemChecked() == "Memory Used") {
-                monitor = eMonitor.eMEM;
+            if (iconHandler.GetMenuItemChecked() == "Memory Used") {
+                monitor = EMonitor.eMEM;
             }
-            if (iconHandler.getMenuItemChecked() == "GPU Usage") {
-                monitor = eMonitor.eGPU;
+            if (iconHandler.GetMenuItemChecked() == "GPU Usage") {
+                monitor = EMonitor.eGPU;
             }
-            if (iconHandler.getMenuItemChecked() == "Disk Speed") {
-                monitor = eMonitor.eDSK;
-            }
-        }
-
-        public void getPerc() {
-            if (monitor == eMonitor.eCPU) {
-                iconHandler.setPerc((int)CPU.NextValue());
-            }
-            if (monitor == eMonitor.eMEM) {
-                iconHandler.setPerc((int)MEM.NextValue());
-            }
-            if (monitor == eMonitor.eGPU) {
-                iconHandler.setPerc((int)GPU.NextValue());
-            }
-            if (monitor == eMonitor.eDSK) {
-                iconHandler.setPerc((int)DSK.NextValue());
+            if (iconHandler.GetMenuItemChecked() == "Disk Speed") {
+                monitor = EMonitor.eDSK;
             }
         }
 
-        public void update() {
-            iconHandler.update();
-            this.updateMonitor();
+        public void GetPerc() {
+            if (monitor == EMonitor.eCPU) {
+                iconHandler.SetPerc((int)CPU.NextValue());
+            }
+            if (monitor == EMonitor.eMEM) {
+                iconHandler.SetPerc((int)MEM.NextValue());
+            }
+            if (monitor == EMonitor.eGPU) {
+                iconHandler.SetPerc((int)GPU.NextValue());
+            }
+            if (monitor == EMonitor.eDSK) {
+                iconHandler.SetPerc((int)DSK.NextValue());
+            }
+        }
+
+        public void Update() {
+            iconHandler.Update();
+            this.UpdateMonitor();
         }
     }
 }

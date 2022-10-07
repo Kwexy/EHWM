@@ -27,8 +27,8 @@ namespace EHWM {
         }
 
         public void Timer1_Tick(object sender, EventArgs e) {
-            hardwareInfoHandler.getPerc();
-            hardwareInfoHandler.update();
+            hardwareInfoHandler.GetPerc();
+            hardwareInfoHandler.Update();
         }
 
         private void EHWMForm_FormClosing(object sender, FormClosingEventArgs e) {

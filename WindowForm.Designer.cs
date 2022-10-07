@@ -90,7 +90,7 @@ namespace EHWM {
             // logoPictureBox
             // 
             this.logoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
+            this.logoPictureBox.Image = Image.FromFile("AppIcon.png");
             this.logoPictureBox.Location = new System.Drawing.Point(140, 12);
             this.logoPictureBox.Name = "logoPictureBox";
             this.logoPictureBox.Size = new System.Drawing.Size(100, 100);

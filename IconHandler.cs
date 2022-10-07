@@ -27,7 +27,7 @@ namespace EHWM {
         private MenuItem menuItemDSK;
 
         //bind icons to .ico files
-        public void setIcons() {
+        public void SetIcons() {
             graphAnim = new Icon[11];
             for (int i = 0; i < graphAnim.Length-1; i++) {
                 string fileName = @"icons\graph" + i.ToString() + ".ico";
@@ -40,17 +40,17 @@ namespace EHWM {
         }
 
         //set local hardware value percentage
-        public void setPerc(int perc) {
+        public void SetPerc(int perc) {
             hardPerc = perc;
         }
 
         //setup ContextMenu for NotifyIcon
-        public void setupMenu() {
+        public void SetupMenu() {
             toolboxIcon.ContextMenu = toolboxMenu;
         }
 
         //set menu item values
-        public void initMenuItems() {
+        public void InitMenuItems() {
             toolboxMenu = new ContextMenu();
             menuItemTitle = new MenuItem();
             menuItemSwitch = new MenuItem();
@@ -76,24 +76,24 @@ namespace EHWM {
             menuItemGPU.Text = "GPU";
             menuItemDSK.Text = "Disk";
 
-            menuItemTitle.Click += new EventHandler(menuItemTitle_Click);
-            menuItemQuit.Click += new EventHandler(menuItemQuit_Click);
+            menuItemTitle.Click += new EventHandler(MenuItemTitle_Click);
+            menuItemQuit.Click += new EventHandler(MenuItemQuit_Click);
 
-            menuItemCPU.Click += new EventHandler(menuItemCPU_Click);
-            menuItemMEM.Click += new EventHandler(menuItemMEM_Click);
-            menuItemGPU.Click += new EventHandler(menuItemGPU_Click);
-            menuItemDSK.Click += new EventHandler(menuItemDSK_Click);
+            menuItemCPU.Click += new EventHandler(MenuItemCPU_Click);
+            menuItemMEM.Click += new EventHandler(MenuItemMEM_Click);
+            menuItemGPU.Click += new EventHandler(MenuItemGPU_Click);
+            menuItemDSK.Click += new EventHandler(MenuItemDSK_Click);
 
-            toolboxIcon.MouseMove += new MouseEventHandler(toolboxIcon_MouseMove);
+            toolboxIcon.MouseMove += new MouseEventHandler(ToolboxIcon_MouseMove);
 
             menuItemCPU.Checked = true;
         }
 
-        public void toolboxIcon_MouseMove(object sender, MouseEventArgs e) {
-            toolboxIcon.Text = "EHWM," + this.getMenuItemChecked() + " " + hardPerc.ToString() + "%";
+        public void ToolboxIcon_MouseMove(object sender, MouseEventArgs e) {
+            toolboxIcon.Text = "EHWM," + this.GetMenuItemChecked() + " " + hardPerc.ToString() + "%";
         }
 
-        private void menuItemTitle_Click (object sender, EventArgs e) {
+        private void MenuItemTitle_Click (object sender, EventArgs e) {
             mainForm.Visible = true;
             mainForm.MinimizeBox = false;
             mainForm.ShowInTaskbar = true;
@@ -104,38 +104,38 @@ namespace EHWM {
             mainForm.Focus();
         }
         
-        private void menuItemQuit_Click(object sender, EventArgs e) {
+        private void MenuItemQuit_Click(object sender, EventArgs e) {
             toolboxIcon.Visible = false;
             Application.Exit();
         }
 
-        private void menuItemCPU_Click(object sender, EventArgs e) {
+        private void MenuItemCPU_Click(object sender, EventArgs e) {
             menuItemCPU.Checked = true;
             menuItemMEM.Checked = false;
             menuItemGPU.Checked = false;
             menuItemDSK.Checked = false;
             
         }
-        private void menuItemMEM_Click(object sender, EventArgs e) {
+        private void MenuItemMEM_Click(object sender, EventArgs e) {
             menuItemCPU.Checked = false;
             menuItemMEM.Checked = true;
             menuItemGPU.Checked = false;
             menuItemDSK.Checked = false;
         }
-        private void menuItemGPU_Click(object sender, EventArgs e) {
+        private void MenuItemGPU_Click(object sender, EventArgs e) {
             menuItemCPU.Checked = false;
             menuItemMEM.Checked = false;
             menuItemGPU.Checked = true;
             menuItemDSK.Checked = false;
         }
-        private void menuItemDSK_Click(object sender, EventArgs e) {
+        private void MenuItemDSK_Click(object sender, EventArgs e) {
             menuItemCPU.Checked = false;
             menuItemMEM.Checked = false;
             menuItemGPU.Checked = false;
             menuItemDSK.Checked = true;
         }
 
-        public string getMenuItemChecked() {
+        public string GetMenuItemChecked() {
             if (menuItemCPU.Checked) {
                 return "CPU Speed";
             } else if (menuItemMEM.Checked) {
@@ -149,8 +149,8 @@ namespace EHWM {
             }
         }
 
-        public void update() {
-            toolboxIcon.Text = Application.ProductName + "v." + Application.ProductVersion + " - " + getMenuItemChecked();
+        public void Update() {
+            toolboxIcon.Text = Application.ProductName + "v." + Application.ProductVersion + " - " + GetMenuItemChecked();
             if (hardPerc < 100) {
                 toolboxIcon.Icon = graphAnim[(int)Math.Floor(hardPerc/10.0)];
             } else {

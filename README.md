@@ -3,7 +3,10 @@
 ---
 
 # Easy HardWare Monitor(EHWM)
-### A Simple Hardware Monitor That Lives In The Taskbar
+# A Simple Hardware Monitor That Lives In The Taskbar
+
+--
+
 <br><br>
 Typically, programs that run on your computer take up screen space.
 EHWM solves this issue by utilizing the taskbar.

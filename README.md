@@ -3,7 +3,7 @@
 ---
 
 # Easy HardWare Monitor(EHWM)
-# A Simple Hardware Monitor That Lives In The Taskbar
+### A Simple Hardware Monitor That Lives In The Taskbar
 
 ---
 

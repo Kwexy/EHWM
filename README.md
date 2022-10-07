@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/Kwexy/EHWM/dev/graphics/AppBanner.jpg" width="300">
+<img src="https://raw.githubusercontent.com/Kwexy/EHWM/dev/graphics/AppBanner.jpg" width="1500">
 
 ---
 

@@ -7,7 +7,7 @@
 
 ---
 
-Programs that run on your computer take up screen space.
+Programs that run on your computer take up screen space.<br>
 EHWM solves this issue by utilizing the taskbar.
 <br><br>
 **NOTE:** As of right now, EHWM only runs on windows OS.

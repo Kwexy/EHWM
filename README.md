@@ -2,5 +2,5 @@
 
 # Easy HardWare Monitor
 ### A Simple Hardware Monitor That Lives In The Taskbar
-<br>
+<br><br><br>
 Typically, programs that run on your computer take up screen space.
